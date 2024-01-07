@@ -1,0 +1,49 @@
+{%extends "main.html"%}
+{% load static %}
+
+{% block 'body'%}
+
+    <div  class="container">
+
+        <div class="row">
+            <div class="col">
+
+                <div class="card">
+                    <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+                    <img src="{% static 'images/add.png' %}" class="img-fluid"/>
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title">Nova categoria</h5>
+                    <p class="card-text">Adiciona uma categoria.</p>
+                    <a href="/categorias/form/" class="btn btn-primary" data-mdb-ripple-init>Nova</a>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col">
+
+                <div class="card">
+                    <div class="bg-image hover-overlay" data-mdb-ripple-init data-mdb-ripple-color="light">
+                        <img src="{% static 'images/lista.png' %}" class="img-fluid"/>
+                    <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                    </a>
+                    </div>
+                    <div class="card-body">
+                    <h5 class="card-title">Gastos</h5>
+                    <p class="card-text">Lista as categorias, podendo adicionar <b>Alterar</b> ou <b>Apagar</b> gastos.</p>
+                    <a href="/categorias/list/" class="btn btn-primary" data-mdb-ripple-init>Listar</a>
+                    </div>
+                </div>
+
+            </div>
+
+        </div> <!--row1-->
+
+    </div>
+
+{% endblock %}

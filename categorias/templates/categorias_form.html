@@ -1,0 +1,60 @@
+{%extends "main.html"%}
+{% load static %}
+
+{% block 'head' %}
+
+    <script src="{% static '/js/categorias_form.js' %}"></script>
+
+{% endblock %}
+
+{% block 'body'%}
+
+    <div class="container">
+
+      <!-- liveToast-->
+    <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
+        <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
+            <div class="toast-header">
+                <i class="fas fa-cat mr-1"></i>
+                <strong class="me-auto">Metas</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="toast" aria-label="Close"></button>
+            </div>
+            <div class="toast-body">
+                <span id="toast-message">Default message</span>
+            </div>
+        </div>
+    </div>
+
+        <div class="row" >
+
+                <form id="form_categoria" method="POST" action="{% url 'categorias_salvar'%}" class="row g-3">
+                    {% csrf_token %}
+                    <div class="col mb-3">
+
+                        <label for="categorias_nome" class="form-label">Nome:</label>
+                        <input type="text" name="nome" id="categorias_nome" placeholder="Nome da meta" value="{{obj_categoria.nome}}">
+                        <input type="hidden" name="id" id="categorias_id" value="{{obj_categoria.id}}">
+                    </div>
+
+                    <div class="col mb-3">
+
+                        <label for="categorias_nome" class="form-label">Valor:</label>
+                        <input type="number" name="meta" id="categorias_meta" placeholder="Valor da meta" value="{{obj_categoria.meta}}">
+
+                    </div>
+
+                    <div class="col mb-3">
+
+                        <input class="btn btn-primary" onClick="save();" data-mdb-ripple-init type="button" value="Salvar">
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+{% endblock %}

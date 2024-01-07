@@ -1,0 +1,126 @@
+{%extends "main.html"%}
+{% load static %}
+
+{% block 'head' %}
+
+    <script src="{% static '/js/categorias_lista.js' %}"></script>
+
+{% endblock %}
+
+{% block 'body'%}
+
+<div class="modal" id="categorias_apaga_modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <input type="hidden" id="ed_apaga_categoria" value="0">
+          <h5 class="modal-title">Apagar</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Apagar a categoria?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" onclick="categorias_apaga()" class="btn btn-primary">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal" id="categorias_reinicia_modal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <input type="hidden" id="ed_apaga_categoria" value="0">
+          <h5 class="modal-title">Reiniciar as metas? (pense bem)</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <p>Reiniciar?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Não</button>
+          <button type="button" onclick="categorias_reinicia()" class="btn btn-primary">Sim</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+<div  class="container">
+
+    <form id="f_categoria_consulta" method="post" autocomplete="off" action="#"> <!--{% url 'categorias_listar' %}-->
+
+        {% csrf_token %}
+        <br>
+        <div class="row">
+
+            <div class="col mb-5">
+
+                <input type="text" id="ed_categoria_consulta_nome" name="valor" value="">
+
+            </div>
+
+            <div class="col mb-5">
+
+                <input class="btn btn-primary" type="submit" value="Pesquisar">
+
+            </div>
+
+            <div class="col mb-5">
+
+              <input class="btn btn-danger" type="button" data-bs-toggle="modal" data-bs-target="#categorias_reinicia_modal" value="Reiniciar">
+
+          </div>
+          </div>
+
+          <div class="row">
+
+            <div class="col mb-5">
+
+                <table border="1" class="table"><tr>
+                    {% for categoria in arr_list %}
+                      <td>{{ categoria.nome}}</td><td>Restam R${{categoria.resta}} de R${{categoria.meta}}</td>
+
+                      <td>
+                        <button type="button" class="btn btn-link" onclick="gasto_novo({{categoria.id}})" data-bs-toggle="modal" style="border:0px">
+                          + Gasto
+                        </button>
+                     </td>
+
+                      <td>
+                        <button type="button" class="btn btn-link" onclick="categorias_modal_apaga({{categoria.id}})" data-bs-toggle="modal" data-bs-target="#categorias_apaga_modal" style="border:0px">
+                          Apaga
+                        </button>
+                     </td>
+
+                     <td>
+                      <button type="button" class="btn btn-link" onclick="categorias_altera({{categoria.id}})"  style="border:0px">
+                        Altera
+                      </button>
+                   </td>
+
+                    </tr>
+                    <tr>
+
+                        <td colspan="5">
+
+                          <div class="progress" onclick="gasto_lista({{categoria.id}})">
+                            <div class="progress-bar" role="progressbar" style="width:{{categoria.percentual}}%;">{{categoria.percentual}}%</div>
+                          </div>
+
+                        </td>
+
+                    </tr>
+                    {% endfor %}
+                </table>
+
+            </div>
+
+        </div>
+    </form>
+
+</div>
+
+{%endblock%}
+
