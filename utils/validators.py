@@ -11,3 +11,11 @@ class Validator:
         else:
             return False
 
+    @staticmethod
+    def zero(value):
+        num_value = float(value)
+        if num_value == 0:
+            return True
+        else:
+            return False
+

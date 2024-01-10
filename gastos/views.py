@@ -21,8 +21,8 @@ def gastos_salva(request):
           return JsonResponse(data)
 
         valor = request.POST.get('valor')
-        if not Validator.positive(valor):
-          data={'success':False, 'message':'O valor precisa ser maior do que zero'}
+        if Validator.zero(valor):
+          data={'success':False, 'message':'O valor precisa ser diferente de zero'}
           return JsonResponse(data)
 
         obj_gastos = Gasto()
@@ -31,13 +31,13 @@ def gastos_salva(request):
         obj_gastos.grupo = grupo_atual()
         obj_gastos.fk_categorias_id = request.POST.get('fk_categorias')
         obj_gastos.save()
-        data={'success':True, 'message':'Sucesso ao salvar a transação'+ request.POST.get('fk_categorias')}
+        data={'success':True, 'message':'Sucesso ao salvar a transação'}
         return JsonResponse(data)
 
 def gastos_lista(request):
    id_categoria = request.GET.get('id')
    grupo = grupo_atual()
-   obj_gastos = Gasto.objects.filter(fk_categorias_id = id_categoria, grupo=grupo).values().order_by('date_add')
+   obj_gastos = Gasto.objects.filter(fk_categorias_id = id_categoria, grupo=grupo).exclude(obs__exact='reiniciou').values().order_by('date_add')[0:30]
 
    return render(request,"gastos_lista.html",{'obj_gastos': obj_gastos})
 

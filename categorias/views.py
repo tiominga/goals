@@ -58,6 +58,7 @@ def total_gastos(id_categoria):
     grupo = grupo_atual()
     total = Gasto.objects.filter(fk_categorias_id=id_categoria, grupo=grupo).aggregate(Sum('valor'))['valor__sum'] or 0
     total = round(total,2)
+    print('id_categoria:',id_categoria,' grupo ',grupo,' retornei ',total)
     return total
 
 def percentual(id_categoria):
@@ -79,9 +80,9 @@ def categorias_lista(request):
     arr_list = Categoria.objects.filter(condiction)[:100000]
 
     for categoria in arr_list:
-        Categoria.percentual = percentual(categoria.id)
-        Categoria.total_gasto = total_gastos(categoria.id)
-        Categoria.resta = resta(categoria.id)
+        categoria.percentual = percentual(categoria.id)
+        categoria.total_gasto = total_gastos(categoria.id)
+        categoria.resta = resta(categoria.id)
 
     return render(request,"categorias_lista.html",{'arr_list':arr_list})
 

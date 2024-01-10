@@ -26,12 +26,12 @@
     </div>
 
    <br>
-        <div class="row mb-5">
+        <div class="row">
 
             <form method="post" id="form_gastos" action="#">
                 {% csrf_token %}
 
-                <div class="col mb-5">
+                <div class="col-md-6 mb-5">
 
                     <input type="text" name="obs" id="gastos_obs" placeholder="observação" value="">
                     <input type="hidden" name="fk_categorias" id="gastos_fk_categorias" value="{{id}}">

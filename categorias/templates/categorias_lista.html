@@ -80,7 +80,7 @@
 
                 <table border="1" class="table"><tr>
                     {% for categoria in arr_list %}
-                      <td>{{ categoria.nome}}</td><td>Restam R${{categoria.resta}} de R${{categoria.meta}}</td>
+                    <td>Gastou {{ categoria.total_gasto}}</td><td>{{ categoria.nome}}</td><td>Restam R${{categoria.resta}} de R${{categoria.meta}}</td>
 
                       <td>
                         <button type="button" class="btn btn-link" onclick="gasto_novo({{categoria.id}})" data-bs-toggle="modal" style="border:0px">
