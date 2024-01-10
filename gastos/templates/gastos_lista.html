@@ -6,6 +6,7 @@
 {%endblock%}
 
 {% block 'body' %}
+<body onload="loaded();"
  <!-- liveToast-->
  <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
     <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
@@ -39,19 +40,35 @@
     </div>
   </div>
 
-<table class="table">
+<table class="table" id="tb_gastos_lista">
+<thead>
+
+  <th>Obs</th>
+  <th>Valor</th>
+  <th>Data</th>
+  <th></th>
+
+</thead>
+<tbody>
 
 {% for gasto in obj_gastos %}
 <tr>
-<td>{{ gasto.obs }}</td><td>R${{gasto.valor}}</td><td>{{gasto.date_add}}</td>
-<td>
-    <button type="button" class="btn btn-link" onclick="gastos_modal_apaga({{gasto.id}})" data-bs-toggle="modal" data-bs-target="#gastos_apaga_modal" style="border:0px">
-      Apaga
-    </button>
- </td>
+  <td>{{ gasto.obs }}</td>
+  <td>R${{gasto.valor}}</td>
+  <td>{{gasto.date_add}}</td>
+
+  <td>
+      <button type="button" class="btn btn-link" onclick="gastos_modal_apaga({{gasto.id}})" data-bs-toggle="modal" data-bs-target="#gastos_apaga_modal" style="border:0px">
+        Apaga
+      </button>
+  </td>
+
 </tr>
 {% endfor %}
 
+</tbody>
 </table>
+
+</body>
 
 {%endblock%}

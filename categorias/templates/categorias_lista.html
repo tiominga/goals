@@ -84,13 +84,11 @@
                   <thead>
                     <tr>
 
-                      <th>Gasto</th>
                       <th>Categoria</th>
-                      <th>Resta</th>
+                      <th>Listar</th>
                       <th>Adiciona</th>
                       <th>Apaga</th>
                       <th>Altera</th>
-                      <th>Progress bar</th>
 
                     </tr>
 
@@ -100,11 +98,16 @@
                   <tr>
                     {% for categoria in arr_list %}
 
-                    <td>{{ categoria.total_gasto}}</td>
+                    <td>{{ categoria.nome}}<br><br>Gastou:{{ categoria.total_gasto}}</td>
 
-                    <td>{{ categoria.nome}}</td>
+                    <td>
 
-                    <td>R${{categoria.resta}} de R${{categoria.meta}}</td>
+                        <div class="progress-bar p-0" onclick="gasto_lista({{categoria.id}})" role="progressbar" style="width:{{categoria.percentual}}%;">{{categoria.percentual}}%</div>
+
+                      <br>
+                      R${{categoria.resta}} de R${{categoria.meta}}
+
+                    </td>
 
                       <td>
                         <button type="button" class="btn btn-link" onclick="gasto_novo({{categoria.id}})" data-bs-toggle="modal" style="border:0px">
@@ -122,14 +125,6 @@
                       <button type="button" class="btn btn-link" onclick="categorias_altera({{categoria.id}})"  style="border:0px">
                         Altera
                       </button>
-                    </td>
-
-                    <td colspan="6">
-
-                            <div class="progress" onclick="gasto_lista({{categoria.id}})">
-                              <div class="progress-bar" role="progressbar" style="width:{{categoria.percentual}}%;">{{categoria.percentual}}%</div>
-                            </div>
-
                     </td>
 
                     </tr>
