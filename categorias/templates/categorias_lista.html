@@ -9,6 +9,8 @@
 
 {% block 'body'%}
 
+<body onload="loaded()">
+
 <div class="modal" id="categorias_apaga_modal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
@@ -78,9 +80,31 @@
 
             <div class="col mb-5">
 
-                <table border="1" class="table"><tr>
+                <table class="table" id="tb_categoria_lista" >
+                  <thead>
+                    <tr>
+
+                      <th>Gasto</th>
+                      <th>Categoria</th>
+                      <th>Resta</th>
+                      <th>Adiciona</th>
+                      <th>Apaga</th>
+                      <th>Altera</th>
+                      <th>Progress bar</th>
+
+                    </tr>
+
+                  </thead>
+
+                  <tbody>
+                  <tr>
                     {% for categoria in arr_list %}
-                    <td>Gastou {{ categoria.total_gasto}}</td><td>{{ categoria.nome}}</td><td>Restam R${{categoria.resta}} de R${{categoria.meta}}</td>
+
+                    <td>{{ categoria.total_gasto}}</td>
+
+                    <td>{{ categoria.nome}}</td>
+
+                    <td>R${{categoria.resta}} de R${{categoria.meta}}</td>
 
                       <td>
                         <button type="button" class="btn btn-link" onclick="gasto_novo({{categoria.id}})" data-bs-toggle="modal" style="border:0px">
@@ -98,21 +122,19 @@
                       <button type="button" class="btn btn-link" onclick="categorias_altera({{categoria.id}})"  style="border:0px">
                         Altera
                       </button>
-                   </td>
+                    </td>
 
-                    </tr>
-                    <tr>
+                    <td colspan="6">
 
-                        <td colspan="5">
+                            <div class="progress" onclick="gasto_lista({{categoria.id}})">
+                              <div class="progress-bar" role="progressbar" style="width:{{categoria.percentual}}%;">{{categoria.percentual}}%</div>
+                            </div>
 
-                          <div class="progress" onclick="gasto_lista({{categoria.id}})">
-                            <div class="progress-bar" role="progressbar" style="width:{{categoria.percentual}}%;">{{categoria.percentual}}%</div>
-                          </div>
-
-                        </td>
+                    </td>
 
                     </tr>
                     {% endfor %}
+                  </tbody>
                 </table>
 
             </div>
@@ -121,6 +143,7 @@
     </form>
 
 </div>
+</body>
 
 {%endblock%}
 
