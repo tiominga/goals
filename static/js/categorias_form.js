@@ -24,6 +24,7 @@ function save(){
     $.post(url, formData, function(response) {
       if (response.success){
         liveToast('bg-primary',response.message);
+        document.getElementById('form_categoria').reset();
       } else {
         liveToast('bg-danger',response.message);
       }

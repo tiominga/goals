@@ -24,36 +24,42 @@
     </div>
 
    <br>
-   <div class="container">
 
-        <div class="row">
+    <div class="container">
 
-            <form method="post" id="form_gastos" action="#">
-                {% csrf_token %}
+        <div class="row mb-5" >
 
-                <div class="col mb-5">
-
-                    <input type="text" name="obs" id="gastos_obs" placeholder="observação" value="">
-                    <input type="hidden" name="fk_categorias" id="gastos_fk_categorias" value="{{id}}">
-                    <input type="hidden" name="id" id="gastos_id" value="">
-
-                </div>
-
-                <div class="col mb-5">
-
-                    <input type="number" name="valor" value="" placeholder="Valor">
-
-                </div>
-
-                <div class="col mb-5">
-
-                    <input class="btn btn-primary" onClick="save();" data-mdb-ripple-init type="button" value="Salvar">
-
-                </div>
-            </form>
+            <h3>Cadastro de Gastos:</h3>
 
         </div>
 
+        <form method="post" id="form_gastos" action="#">
+        {% csrf_token %}
+        <div class="row">
+
+            <div class="col-4 mb-5">
+
+                <input type="text" name="obs" id="gastos_obs" placeholder="observação" value="">
+                <input type="hidden" name="fk_categorias" id="gastos_fk_categorias" value="{{id}}">
+                <input type="hidden" name="id" id="gastos_id" value="">
+
+            </div>
+
+            <div class="col-4 mb-5">
+
+                <input type="number" name="valor" value="" placeholder="Valor">
+
+            </div>
+
+            <div class="col-4 mb-5">
+
+                <input class="btn btn-primary" onClick="save();" data-mdb-ripple-init type="button" value="Salvar">
+
+            </div>
+
+        </div>
+
+        </form>
     </div>
 
 {% endblock %}
