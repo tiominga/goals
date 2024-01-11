@@ -100,24 +100,24 @@
 
                     <td  onclick="gasto_lista({{categoria.id}})">
 
-                        <div class="progress-bar p-0" role="progressbar" style="width:{{categoria.percentual}}%;">{{categoria.percentual}}%</div>
+                        <div class="progress-bar p-0" role="progressbar" max="100" style="width:{{categoria.width_bar}}%;">{{categoria.percentual}}%</div>
 
                       <br>
-                      R${{categoria.resta}} de R${{categoria.meta}}
+                      Restam R${{categoria.resta}} de R${{categoria.meta}}
 
                     </td>
 
                       <td>
                         <button type="button" class="btn btn-link" onclick="gasto_novo({{categoria.id}})" data-bs-toggle="modal" style="border:0px">
-                          <img class="img-fluid" src="{%static '/images/plus.png' %}">
+                          <br><img class="img-fluid" src="{%static '/images/plus.png' %}">
                         </button>
 
                         <button type="button" class="btn btn-link" onclick="categorias_modal_apaga({{categoria.id}})" data-bs-toggle="modal" data-bs-target="#categorias_apaga_modal" style="border:0px">
-                          <img class="img-fluid" src="{%static '/images/del.png' %}">
+                          <br><img class="img-fluid" src="{%static '/images/del.png' %}">
                         </button>
 
                       <button type="button" class="btn btn-link" onclick="categorias_altera({{categoria.id}})"  style="border:0px">
-                        <img class="img-fluid" src="{%static '/images/edit.png' %}">
+                        <br><img class="img-fluid" src="{%static '/images/edit.png' %}">
                       </button>
                     </td>
 

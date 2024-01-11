@@ -42,7 +42,6 @@ def categorias_salva(request):
     return JsonResponse(data)
 
 def limite_gastos(id_categoria):
-    print('procurarei poir',id_categoria)
     obj_categoria = Categoria.objects.filter(id=id_categoria).values('meta','nome').order_by('nome').first()
     return obj_categoria['meta']
 
@@ -68,6 +67,16 @@ def percentual(id_categoria):
     perc_str = str(perc).replace(',', '.')
     return perc_str
 
+def width_bar(id_categoria):
+    wd = float(percentual(id_categoria))
+
+    if wd > 100:
+        wd = 100
+    elif wd < 0:
+        wd=0
+
+    return str(wd).replace(',','.')
+
 def categorias_lista(request):
     valor = request.POST.get('valor')
 
@@ -82,6 +91,7 @@ def categorias_lista(request):
         categoria.percentual = percentual(categoria.id)
         categoria.total_gasto = total_gastos(categoria.id)
         categoria.resta = resta(categoria.id)
+        categoria.width_bar = width_bar(categoria.id)
 
     return render(request,"categorias_lista.html",{'arr_list':arr_list})
 
