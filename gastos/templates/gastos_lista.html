@@ -49,8 +49,8 @@
         <th>Obs</th>
         <th>Valor</th>
         <th>Data</th>
-        <th></th>
-
+        <th>Ação</th>
+        
       </thead>
       <tbody>
 
@@ -62,7 +62,7 @@
 
         <td>
             <button type="button" class="btn btn-link" onclick="gastos_modal_apaga({{gasto.id}})" data-bs-toggle="modal" data-bs-target="#gastos_apaga_modal" style="border:0px">
-              Apaga
+             <img src="{%static '/images/del.png'%}">
             </button>
         </td>
 

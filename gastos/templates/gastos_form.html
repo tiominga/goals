@@ -9,8 +9,6 @@
 
 {% block 'body' %}
 
-   <div class="container">
-
       <!-- liveToast-->
       <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 11">
         <div id="liveToast" class="toast hide" role="alert" aria-live="assertive" aria-atomic="true">
@@ -26,12 +24,14 @@
     </div>
 
    <br>
+   <div class="container">
+
         <div class="row">
 
             <form method="post" id="form_gastos" action="#">
                 {% csrf_token %}
 
-                <div class="col">
+                <div class="col mb-5">
 
                     <input type="text" name="obs" id="gastos_obs" placeholder="observação" value="">
                     <input type="hidden" name="fk_categorias" id="gastos_fk_categorias" value="{{id}}">
@@ -39,9 +39,9 @@
 
                 </div>
 
-                <div class="col">
+                <div class="col mb-5">
 
-                    <input type="number" name="valor" value="">
+                    <input type="number" name="valor" value="" placeholder="Valor">
 
                 </div>
 
@@ -52,7 +52,7 @@
                 </div>
             </form>
 
-            </div>
+        </div>
 
     </div>
 
