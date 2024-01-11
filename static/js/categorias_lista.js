@@ -2,6 +2,7 @@ function loaded(){
 
     $('#tb_categoria_lista').DataTable({
         responsive: true,
+        searching: false,
         // "bSort": false,
         "aaSorting": [],
         "pageLength": 10,

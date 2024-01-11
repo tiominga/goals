@@ -25,7 +25,7 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <input type="text" id="ed_apaga_gasto" value="0">
+          <input type="hidden" id="ed_apaga_gasto" value="0">
           <h5 class="modal-title">Apagar</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
@@ -40,35 +40,40 @@
     </div>
   </div>
 
-<table class="table" id="tb_gastos_lista">
-<thead>
+<div class="container">
+  <div class="row">
+    <div class="col">
+      <table class="table" id="tb_gastos_lista">
+      <thead>
 
-  <th>Obs</th>
-  <th>Valor</th>
-  <th>Data</th>
-  <th></th>
+        <th>Obs</th>
+        <th>Valor</th>
+        <th>Data</th>
+        <th></th>
 
-</thead>
-<tbody>
+      </thead>
+      <tbody>
 
-{% for gasto in obj_gastos %}
-<tr>
-  <td>{{ gasto.obs }}</td>
-  <td>R${{gasto.valor}}</td>
-  <td>{{gasto.date_add}}</td>
+      {% for gasto in obj_gastos %}
+      <tr>
+        <td>{{ gasto.obs }}</td>
+        <td>R${{gasto.valor}}</td>
+        <td>{{gasto.date_add}}</td>
 
-  <td>
-      <button type="button" class="btn btn-link" onclick="gastos_modal_apaga({{gasto.id}})" data-bs-toggle="modal" data-bs-target="#gastos_apaga_modal" style="border:0px">
-        Apaga
-      </button>
-  </td>
+        <td>
+            <button type="button" class="btn btn-link" onclick="gastos_modal_apaga({{gasto.id}})" data-bs-toggle="modal" data-bs-target="#gastos_apaga_modal" style="border:0px">
+              Apaga
+            </button>
+        </td>
 
-</tr>
-{% endfor %}
+      </tr>
+      {% endfor %}
 
-</tbody>
-</table>
-
+      </tbody>
+      </table>
+    </div>
+  </div>
+</div>
 </body>
 
 {%endblock%}
