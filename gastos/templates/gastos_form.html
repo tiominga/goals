@@ -31,7 +31,7 @@
             <form method="post" id="form_gastos" action="#">
                 {% csrf_token %}
 
-                <div class="col-md-6 mb-5">
+                <div class="col">
 
                     <input type="text" name="obs" id="gastos_obs" placeholder="observação" value="">
                     <input type="hidden" name="fk_categorias" id="gastos_fk_categorias" value="{{id}}">
@@ -39,9 +39,9 @@
 
                 </div>
 
-                <div class="col mb-5">
+                <div class="col">
 
-                    <input type="number" name="valor" value="0">
+                    <input type="number" name="valor" value="">
 
                 </div>
 
