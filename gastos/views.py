@@ -1,14 +1,23 @@
 from django.shortcuts import render
 from .models import Gasto
+from .models import Categoria
 from django.db.models import Q
 from django.http import JsonResponse
 from utils.validators import *
 from django.db.models import Max
 
 # Create your views here.
+def nome_categoria(id_categoria):
+    obj_categoria = Categoria.objects.get(id=1)
+    nome = obj_categoria.nome
+
+    return nome
+
 def gastos_form(request):
      id = request.GET.get('id')
-     return render(request,"gastos_form.html",{'id':id})
+     categoria = nome_categoria(id)
+     arr_gastos = {'id':id ,'categoria':categoria }
+     return render(request,"gastos_form.html",{'arr_gastos':arr_gastos})
 
 def grupo_atual():
     max_grupo = Gasto.objects.all().aggregate(Max('grupo'))['grupo__max']
