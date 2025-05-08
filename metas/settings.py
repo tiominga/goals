@@ -83,7 +83,7 @@ WSGI_APPLICATION = 'metas.wsgi.application'
         'ENGINE': 'django.db.backends.mysql',
         'NAME': 'metas',
         'USER': 'root',
-        'PASSWORD': '',
+        'PASSWORD': '2005@Miguel70252',
         'HOST': 'localhost',   # Or an IP Address that your DB is hosted on
         'PORT': '3306',
     }
