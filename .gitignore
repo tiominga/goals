@@ -1,1 +1,11 @@
+metas_env/
+*.env
+.env/
+venv/
+env/
+bin/
+lib/
+lib64/
+include/
+Scripts/
 db.sqlite3

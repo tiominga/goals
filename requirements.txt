@@ -3,7 +3,7 @@ asttokens==3.0.0
 attrs==25.3.0
 backcall==0.2.0
 beautifulsoup4==4.13.4
-bleach==6.2.0
+bleach
 certifi==2025.4.26
 charset-normalizer==3.4.2
 colorama==0.4.6
